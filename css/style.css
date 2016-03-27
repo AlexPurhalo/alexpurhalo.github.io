@@ -1,0 +1,43 @@
+
+.main-title {
+    color: #333;
+    font-size: 85px;
+    text-align: left;
+    padding-bottom: 30px;
+    margin-left: 50px;
+    margin-top: 70px;
+}
+
+
+.table {
+    margin-top: 30px;
+}
+
+
+.addData {
+    display: inline-block;
+}
+
+.addData.price {
+    width: 20%;
+}
+
+.addData.description {
+    width: 60%;
+}
+
+.sum {
+    color: #666666;
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.row-in-table {
+    cursor: pointer;
+}
+
+.error-massage {
+    color: rgba(255, 0, 0, 0.73);
+    font-weight: bold;
+}

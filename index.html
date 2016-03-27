@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
+	<title>My Awesome Budget App</title>
+	<link rel="stylesheet" href="bower_components/normalize-css/normalize.css"/>
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/style.css"/>
 </head>
-<body>
-Hello WOrld
+<body ng-app='BudgetApp'>
+
+	<!-- Name  -->
+	<div class='container'>
+		<h1 class='main-title'>My Awesome Budget App</h1>
+	</div>
+
+	<!-- Items Controller -->
+	<div class='container' ng-controller='ItemCtrl'>
+
+        <!-- Errors -->
+        <p class="error-massage">{{ error }}</p>
+
+		<!-- Rows  -->
+		<div class='row'>
+			<div class='col-md-6'>
+				<input class='addData price form-control' type='number' placeholder="price" ng-model='item.price'>
+				<input class='addData description form-control' type='text' placeholder="description" ng-model='item.description'>
+				<button class='btn bnt-default' ng-click='add()'>Add</button> <!-- method -->
+			</div>
+			<div class='col-md-6'>
+				<input class='form-control' type='text' placeholder='Searh' ng-model='keyWord'>
+			</div>
+		</div>
+
+		<!-- Table's items  -->
+		<table class='table'>
+		<thead>
+			<tr>
+				<th>Price</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+            <!-- Items -->
+            <tr class='row-in-table' ng-repeat='row in table | filter:keyWord' ng-style="row.price > 0 && {'background-color':'#A1F39B'}  || row.price < 1 && {'background-color':'#F39B9B'}">
+                <td>{{ row.price | currency }}</td>
+                <td>{{ row.description }}</td>
+                <td><img src='https://cdn3.iconfinder.com/data/icons/hello-to-ui-vol2/512/simple_cross-512.png' style='width: 15px; height: 15px' data-ng-click="removeRow($index)"></td>
+            </tr>
+            <!-- Merged Items -->
+            <tr class="row-in-table" ng-repeat="row in merged">
+                <td>{{ row.price | currency }}</td>
+                <td>Sum up ( {{ row.date | date }} )</td>
+            </tr>
+            <!-- Total amount -->
+            <tr>
+                <td>{{ total | currency }}</td>
+                <td style="font-weight: bold;"><p>Total</p></td>
+            </tr>
+		</tbody>
+		</table>
+
+		<!-- Items calculating button -->
+		<button class='btn bnt-default' ng-click='sum()'>Sum Up</button><br>
+	</div>
+
+
+
+	<!-- Bower components -->
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="bower_components/angular/angular.min.js"></script>
+
+	<!-- Modules -->
+	<script src="js/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="js/controllers/ItemController.js"></script>
 </body>
 </html>
