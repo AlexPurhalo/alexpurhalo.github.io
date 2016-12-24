@@ -1,0 +1,9 @@
+.main-page {
+  @import './main/loader';
+  @import './main/activity-log';
+  @import './main/question-info';
+  @import './main/skip-question';
+  @import './main/answer';
+  @import './main/continue-quiz';
+  @import './main/progress-message';
+}
